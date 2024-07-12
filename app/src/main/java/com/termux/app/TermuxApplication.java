@@ -3,6 +3,7 @@ package com.termux.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.ewt45.FloatingButton;
 import com.termux.BuildConfig;
 import com.termux.shared.errors.Error;
 import com.termux.shared.logger.Logger;
@@ -71,6 +72,8 @@ public class TermuxApplication extends Application {
         if (isTermuxFilesDirectoryAccessible) {
             TermuxShellEnvironment.writeEnvironmentToFile(this);
         }
+
+        FloatingButton.init(this); //显示悬浮球按钮
     }
 
     public static void setLogConfig(Context context) {

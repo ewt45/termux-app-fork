@@ -49,7 +49,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.TermuxApp.DayNight.DarkActionBar"
-        tools:targetApi="m">
+        tools:targetApi="m"
+        tools:replace="android:label,android:supportsRtl,android:theme">
 
         <activity
             android:name=".app.TermuxActivity"
@@ -226,12 +227,35 @@
         <!-- Version >= 3.0. DeX Dual Mode support -->
         <meta-data
             android:name="com.samsung.android.multidisplay.keep_process_alive"
-            android:value="true" />
+            android:value="true"
+            tools:replace="android:value"/>
 
         <meta-data
             android:name="com.sec.android.support.multiwindow"
             android:value="true" />
 
+        <activity android:name="com.termux.x11.XrActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="com.oculus.intent.category.VR" />
+                <category android:name="android.intent.category.LAUNCHER"
+                    tools:node="remove" />
+            </intent-filter>
+        </activity>
+
+<!--        android:theme="@style/Theme.TermuxApp.DayNight.NoActionBar"-->
+        <activity android:name="com.termux.x11.MainActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"
+                    tools:node="remove" />
+            </intent-filter>
+        </activity>
+        <service android:name="com.ewt45.X11Service"
+            android:process=":xserver"/>
     </application>
 
 </manifest>
