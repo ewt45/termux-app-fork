@@ -1,12 +1,10 @@
-package com.termux.shared.termux.extrakeys;
+package com.termux.shared.termux.extrakeys_app;
 
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.button.MaterialButton;
-import com.termux.shared.termux.extrakeys.ExtraKeysConstants.EXTRA_KEY_DISPLAY_MAPS;
 import com.termux.shared.termux.terminal.io.TerminalExtraKeys;
 
 import org.json.JSONArray;
@@ -198,15 +196,15 @@ public class ExtraKeysInfo {
     public static ExtraKeysConstants.ExtraKeyDisplayMap getCharDisplayMapForStyle(String style) {
         switch (style) {
             case "arrows-only":
-                return EXTRA_KEY_DISPLAY_MAPS.ARROWS_ONLY_CHAR_DISPLAY;
+                return ExtraKeysConstants.EXTRA_KEY_DISPLAY_MAPS.ARROWS_ONLY_CHAR_DISPLAY;
             case "arrows-all":
-                return EXTRA_KEY_DISPLAY_MAPS.LOTS_OF_ARROWS_CHAR_DISPLAY;
+                return ExtraKeysConstants.EXTRA_KEY_DISPLAY_MAPS.LOTS_OF_ARROWS_CHAR_DISPLAY;
             case "all":
-                return EXTRA_KEY_DISPLAY_MAPS.FULL_ISO_CHAR_DISPLAY;
+                return ExtraKeysConstants.EXTRA_KEY_DISPLAY_MAPS.FULL_ISO_CHAR_DISPLAY;
             case "none":
                 return new ExtraKeysConstants.ExtraKeyDisplayMap();
             default:
-                return EXTRA_KEY_DISPLAY_MAPS.DEFAULT_CHAR_DISPLAY;
+                return ExtraKeysConstants.EXTRA_KEY_DISPLAY_MAPS.DEFAULT_CHAR_DISPLAY;
         }
     }
 
