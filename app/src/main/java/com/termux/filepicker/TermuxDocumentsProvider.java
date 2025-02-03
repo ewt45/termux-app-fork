@@ -35,7 +35,7 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
 
     private static final String ALL_MIME_TYPES = "*/*";
 
-    private static final File BASE_DIR = TermuxConstants.TERMUX_HOME_DIR;
+    private static final File BASE_DIR = TermuxConstants.TERMUX_INTERNAL_PRIVATE_APP_DATA_DIR;
 
 
     // The default columns to return information about a root if no specific
@@ -171,7 +171,7 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
             // through the whole SD card).
             boolean isInsideHome;
             try {
-                isInsideHome = file.getCanonicalPath().startsWith(TermuxConstants.TERMUX_HOME_DIR_PATH);
+                isInsideHome = file.getCanonicalPath().startsWith(TermuxConstants.TERMUX_INTERNAL_PRIVATE_APP_DATA_DIR_PATH);
             } catch (IOException e) {
                 isInsideHome = true;
             }
@@ -257,7 +257,10 @@ public class TermuxDocumentsProvider extends DocumentsProvider {
 
         final MatrixCursor.RowBuilder row = result.newRow();
         row.add(Document.COLUMN_DOCUMENT_ID, docId);
-        row.add(Document.COLUMN_DISPLAY_NAME, displayName);
+        row.add(Document.COLUMN_DISPLAY_NAME,
+            file.getAbsolutePath().equals(BASE_DIR.getAbsolutePath())
+                ? getContext().getString(R.string.application_name)
+                : displayName);//修复mt左侧显示根目录名称为files的bug
         row.add(Document.COLUMN_SIZE, file.length());
         row.add(Document.COLUMN_MIME_TYPE, mimeType);
         row.add(Document.COLUMN_LAST_MODIFIED, file.lastModified());

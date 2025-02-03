@@ -1,6 +1,7 @@
 name: Build
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -15,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package_variant: [ apt-android-7, apt-android-5 ]
+        package_variant: [ apt-android-7 ]
 
     steps:
       - name: Clone repository
