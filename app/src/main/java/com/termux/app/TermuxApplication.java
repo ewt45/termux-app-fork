@@ -71,6 +71,8 @@ public class TermuxApplication extends Application {
         if (isTermuxFilesDirectoryAccessible) {
             TermuxShellEnvironment.writeEnvironmentToFile(this);
         }
+
+        com.ewt45.FloatingButton.init(this); //显示悬浮球按钮
     }
 
     public static void setLogConfig(Context context) {
